@@ -14,7 +14,10 @@ connectDB();
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ 
+  origin: ['http://localhost:3000', 'https://lms-zeta-woad.vercel.app'],
+  credentials: true
+}));
 
 // Root route
 app.get("/", (req, res) => {
