@@ -28,8 +28,14 @@ app.use("/api/laptops", laptopRoutes);
 app.use("/api/employees", employeeRoutes);
 app.use("/api/auth", authRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.clear();
-    console.log('🚀 Backend server is running successfully on port ' + PORT);
-});
+// For Vercel deployment
+export default app;
+
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.clear();
+        console.log('🚀 Backend server is running successfully on port ' + PORT);
+    });
+}
